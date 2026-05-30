@@ -1,6 +1,13 @@
-import { StyleSheet, View, Text } from "react-native";
+import { useRouter } from "expo-router";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function WelcomeScreen() {
+  const router = useRouter();
+
+  const handleContinue = () => {
+    router.push("/(tabs)");
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -10,6 +17,14 @@ export default function WelcomeScreen() {
           Book sustainable rides and track your carbon savings
         </Text>
       </View>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={handleContinue}
+        activeOpacity={0.7}
+      >
+        <Text style={styles.buttonText}>Continue</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -24,6 +39,7 @@ const styles = StyleSheet.create({
   },
   content: {
     alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     fontSize: 48,
@@ -42,5 +58,20 @@ const styles = StyleSheet.create({
     color: "#666",
     textAlign: "center",
     marginTop: 20,
+  },
+  button: {
+    position: "absolute",
+    bottom: 50,
+    backgroundColor: "#00C853",
+    paddingHorizontal: 48,
+    paddingVertical: 14,
+    borderRadius: 28,
+    width: "100%",
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "600",
   },
 });

@@ -1,0 +1,88 @@
+{
+  "rides": [
+    {
+      "id": "1",
+      "vehicleType": "Electric",
+      "vehicleModel": "Tesla Model 3",
+      "driverName": "Sarah Johnson",
+      "driverRating": 4.9,
+      "eta": "3 mins",
+      "price": 7.50,
+      "co2Saved": 1.4,
+      "estimatedDuration": "12 mins"
+    },
+    {
+      "id": "2",
+      "vehicleType": "Hybrid",
+      "vehicleModel": "Toyota Prius",
+      "driverName": "Mike Chen",
+      "driverRating": 4.8,
+      "eta": "4 mins",
+      "price": 6.80,
+      "co2Saved": 0.8,
+      "estimatedDuration": "15 mins"
+    },
+    {
+      "id": "3",
+      "vehicleType": "Electric",
+      "vehicleModel": "Nissan Leaf",
+      "driverName": "Emily Davis",
+      "driverRating": 5.0,
+      "eta": "5 mins",
+      "price": 7.20,
+      "co2Saved": 1.3,
+      "estimatedDuration": "14 mins"
+    },
+    {
+      "id": "4",
+      "vehicleType": "Hybrid",
+      "vehicleModel": "Honda Accord Hybrid",
+      "driverName": "James Wilson",
+      "driverRating": 4.7,
+      "eta": "6 mins",
+      "price": 6.50,
+      "co2Saved": 0.9,
+      "estimatedDuration": "16 mins"
+    },
+    {
+      "id": "5",
+      "vehicleType": "Electric",
+      "vehicleModel": "BMW i3",
+      "driverName": "Lisa Anderson",
+      "driverRating": 4.9,
+      "eta": "7 mins",
+      "price": 8.00,
+      "co2Saved": 1.5,
+      "estimatedDuration": "18 mins"
+    }
+  ],
+  "recentRides": [
+    {
+      "id": "r1",
+      "date": "2026-05-30",
+      "from": "Home",
+      "to": "Office",
+      "co2Saved": 1.4,
+      "ecoPoints": 14,
+      "price": 7.50
+    },
+    {
+      "id": "r2",
+      "date": "2026-05-29",
+      "from": "Office",
+      "to": "Gym",
+      "co2Saved": 0.8,
+      "ecoPoints": 8,
+      "price": 6.80
+    },
+    {
+      "id": "r3",
+      "date": "2026-05-28",
+      "from": "Home",
+      "to": "Restaurant",
+      "co2Saved": 1.2,
+      "ecoPoints": 12,
+      "price": 7.20
+    }
+  ]
+}
