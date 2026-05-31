@@ -1,13 +1,19 @@
-import { StyleSheet, View, Text, SafeAreaView, TouchableOpacity } from "react-native";
-import { useTheme } from "@/shared/context/ThemeContext";
-import { useProfile } from "@/modules/profile/hooks/useProfile";
-import { useRouter } from "expo-router";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { StatsCard } from "@/modules/profile/components/StatsCard";
-import { ImpactCard } from "@/modules/profile/components/ImpactCard";
 import { DarkModeToggle } from "@/modules/profile/components/DarkModeToggle";
+import { ImpactCard } from "@/modules/profile/components/ImpactCard";
+import { StatsCard } from "@/modules/profile/components/StatsCard";
+import { useProfile } from "@/modules/profile/hooks/useProfile";
+import { useTheme } from "@/shared/context/ThemeContext";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-export default function ProfilePage() {
+export default function ProfileScreen() {
   const { colors } = useTheme();
   const { stats } = useProfile();
   const router = useRouter();
@@ -18,12 +24,13 @@ export default function ProfilePage() {
 
   return (
     <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.backgroundSecondary }]}
+      style={[
+        styles.container,
+        { backgroundColor: colors.backgroundSecondary },
+      ]}
     >
       <View style={styles.header}>
-        <Text style={[styles.title, { color: colors.text }]}>
-          Your Rewards
-        </Text>
+        <Text style={[styles.title, { color: colors.text }]}>Your Rewards</Text>
       </View>
 
       <View style={styles.content}>
@@ -66,22 +73,9 @@ export default function ProfilePage() {
       </View>
 
       {/* Dark Mode Toggle */}
+
       <View style={styles.toggleContainer}>
-        <View
-          style={[styles.toggleWrapper, { backgroundColor: colors.card }]}
-        >
-          <View style={styles.toggleLabelContainer}>
-            <MaterialCommunityIcons
-              name="moon-waning-crescent"
-              size={20}
-              color={colors.primary}
-            />
-            <Text style={[styles.toggleLabel, { color: colors.text }]}>
-              Dark Mode
-            </Text>
-          </View>
-          <DarkModeToggle />
-        </View>
+        <DarkModeToggle />
       </View>
     </SafeAreaView>
   );

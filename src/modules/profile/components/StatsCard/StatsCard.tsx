@@ -17,13 +17,13 @@ export default function StatsCard({
   label,
   color = "#00C853",
 }: StatsCardProps) {
-  const { isDark } = useTheme();
+  const { colors } = useTheme();
 
   return (
     <View
       style={[
         styles.card,
-        { backgroundColor: isDark ? "#2C2C2E" : "#FFFFFF" },
+        { backgroundColor: colors.card },
       ]}
     >
       <View style={styles.iconContainer}>
@@ -36,7 +36,7 @@ export default function StatsCard({
       <Text
         style={[
           styles.value,
-          { color: color === "#00C853" ? "#00C853" : isDark ? "#FFFFFF" : "#000000" },
+          { color: color === "#00C853" ? color : colors.text },
         ]}
       >
         {value}
@@ -44,7 +44,7 @@ export default function StatsCard({
       <Text
         style={[
           styles.label,
-          { color: isDark ? "#A1A1A6" : "#666666" },
+          { color: colors.textSecondary },
         ]}
       >
         {label}

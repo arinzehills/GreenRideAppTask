@@ -7,13 +7,14 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMemo, useRef } from "react";
+import { Dimensions, StyleSheet, Text, View } from "react-native";
 import {
-  Dimensions,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+  RideCardMinimum,
+  SummarySection,
+  EcoPointsCard,
+  ActionButtons,
+} from "./components";
+
 const { height: screenHeight } = Dimensions.get("window");
 
 export default function BookingConfirmationScreen() {
@@ -80,87 +81,22 @@ export default function BookingConfirmationScreen() {
           {/* Drag Handle */}
           <View style={styles.dragHandle} />
 
-          {/* Ride Card (Always Visible) */}
-          <View style={styles.rideCardMinimum}>
-            <View style={styles.rideIcon}>
-              <MaterialCommunityIcons
-                name={
-                  ride.vehicleType === "Electric" ? "lightning-bolt" : "leaf"
-                }
-                size={20}
-                color="#FFFFFF"
-              />
-            </View>
-            <View style={styles.rideDetailsMinimum}>
-              <Text style={styles.rideModel}>{ride.vehicleModel}</Text>
-              <Text style={styles.rideType}>{ride.vehicleType}</Text>
-            </View>
-          </View>
+          {/* Ride Card */}
+          <RideCardMinimum ride={ride} />
 
           {/* Expandable Details Section */}
           <View style={styles.expandableContent}>
-            {/* Divider */}
-            <View style={styles.divider} />
+            {/* Summary Section */}
+            <SummarySection ride={ride} />
 
-            {/* Summary Details */}
-            <View style={styles.summaryRow}>
-              <View style={styles.summaryItem}>
-                <MaterialCommunityIcons
-                  name="clock-outline"
-                  size={18}
-                  color="#666"
-                />
-                <Text style={styles.summaryLabel}>ETA</Text>
-                <Text style={styles.summaryValue}>{ride.eta}</Text>
-              </View>
+            {/* EcoPoints Card */}
+            <EcoPointsCard ecoPoints={ecoPoints} />
 
-              <View style={styles.summaryItem}>
-                <MaterialCommunityIcons name="cash" size={18} color="#666" />
-                <Text style={styles.summaryLabel}>Price</Text>
-                <Text style={styles.summaryValue}>
-                  ${ride.price.toFixed(2)}
-                </Text>
-              </View>
-
-              <View style={styles.summaryItem}>
-                <MaterialCommunityIcons name="leaf" size={18} color="#00C853" />
-                <Text style={styles.summaryLabel}>CO2 Saved</Text>
-                <Text style={[styles.summaryValue, { color: "#00C853" }]}>
-                  {ride.co2Saved} kg
-                </Text>
-              </View>
-            </View>
-
-            {/* Divider */}
-            <View style={styles.divider} />
-
-            {/* EcoPoints */}
-            <View style={styles.ecoPointsSection}>
-              <View style={styles.ecoPointsIcon}>
-                <Text style={styles.ecoIcon}>⭐</Text>
-              </View>
-              <View>
-                <Text style={styles.ecoPointsLabel}>EcoPoints Earned</Text>
-                <Text style={styles.ecoPointsValue}>{ecoPoints} points</Text>
-              </View>
-            </View>
-
-            {/* Buttons */}
-            <TouchableOpacity
-              style={styles.confirmButton}
-              onPress={handleConfirm}
-              activeOpacity={0.8}
-            >
-              <Text style={styles.confirmButtonText}>Confirm Booking</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.cancelButton}
-              onPress={() => router.back()}
-              activeOpacity={0.7}
-            >
-              <Text style={styles.cancelButtonText}>Cancel</Text>
-            </TouchableOpacity>
+            {/* Action Buttons */}
+            <ActionButtons
+              onConfirm={handleConfirm}
+              onCancel={() => router.back()}
+            />
           </View>
         </BottomSheetScrollView>
       </BottomSheet>
