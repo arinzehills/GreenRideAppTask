@@ -3,9 +3,11 @@ import { useRouter, useLocalSearchParams } from "expo-router";
 import { useRef, useEffect } from "react";
 import ConfettiCannon from "react-native-confetti-cannon";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useTheme } from "@/shared/context/ThemeContext";
 
 export default function BookingSuccessScreen() {
   const router = useRouter();
+  const { colors } = useTheme();
   const params = useLocalSearchParams();
   const rideId = params.rideId as string;
   const eta = params.eta as string;
@@ -24,7 +26,7 @@ export default function BookingSuccessScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       {/* Confetti Animation */}
       <ConfettiCannon
         ref={confettiRef}
@@ -40,30 +42,30 @@ export default function BookingSuccessScreen() {
           <MaterialCommunityIcons
             name="check-circle"
             size={80}
-            color="#00C853"
+            color={colors.primary}
           />
         </View>
 
         {/* Success Message */}
-        <Text style={styles.title}>Booking Confirmed!</Text>
-        <Text style={styles.subtitle}>Your vehicle is on its way</Text>
+        <Text style={[styles.title, { color: colors.text }]}>Booking Confirmed!</Text>
+        <Text style={[styles.subtitle, { color: colors.textSecondary }]}>Your vehicle is on its way</Text>
 
         {/* Driver Info */}
-        <View style={styles.driverInfo}>
+        <View style={[styles.driverInfo, { backgroundColor: colors.primaryLight }]}>
           <MaterialCommunityIcons
             name="car-electric"
             size={24}
-            color="#00C853"
+            color={colors.primary}
           />
           <View style={styles.driverDetails}>
-            <Text style={styles.driverLabel}>Arriving in</Text>
-            <Text style={styles.eta}>{eta || "3 mins"}</Text>
+            <Text style={[styles.driverLabel, { color: colors.textSecondary }]}>Arriving in</Text>
+            <Text style={[styles.eta, { color: colors.primary }]}>{eta || "3 mins"}</Text>
           </View>
         </View>
 
         {/* Go Home Button */}
         <TouchableOpacity
-          style={styles.button}
+          style={[styles.button, { backgroundColor: colors.primary }]}
           onPress={handleGoHome}
           activeOpacity={0.8}
         >
@@ -77,7 +79,6 @@ export default function BookingSuccessScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -110,7 +111,6 @@ const styles = StyleSheet.create({
   driverInfo: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#F0F8F5",
     paddingVertical: 16,
     paddingHorizontal: 20,
     borderRadius: 12,
@@ -131,7 +131,6 @@ const styles = StyleSheet.create({
     color: "#00C853",
   },
   button: {
-    backgroundColor: "#00C853",
     paddingVertical: 14,
     paddingHorizontal: 40,
     borderRadius: 10,

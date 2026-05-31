@@ -1,6 +1,7 @@
 import ridesData from "@/data/rides.json";
 import { useBooking } from "@/modules/booking/hooks/useBooking";
 import { useProfile } from "@/modules/profile/hooks/useProfile";
+import { useTheme } from "@/shared/context/ThemeContext";
 import { Ride } from "@/modules/rides/types";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
@@ -17,6 +18,7 @@ const { height: screenHeight } = Dimensions.get("window");
 
 export default function BookingConfirmationScreen() {
   const router = useRouter();
+  const { colors } = useTheme();
   const params = useLocalSearchParams();
   const rideId = params.rideId as string;
   const bottomSheetRef = useRef(null);
@@ -59,11 +61,11 @@ export default function BookingConfirmationScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       {/* Map area (empty for now) */}
-      <View style={styles.mapPlaceholder}>
-        <MaterialCommunityIcons name="map" size={48} color="#CCC" />
-        <Text style={styles.mapPlaceholderText}>Map coming soon</Text>
+      <View style={[styles.mapPlaceholder, { backgroundColor: colors.surface }]}>
+        <MaterialCommunityIcons name="map" size={48} color={colors.textTertiary} />
+        <Text style={[styles.mapPlaceholderText, { color: colors.textTertiary }]}>Map coming soon</Text>
       </View>
 
       {/* Bottom Sheet */}
