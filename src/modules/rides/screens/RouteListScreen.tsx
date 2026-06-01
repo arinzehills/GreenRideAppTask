@@ -1,9 +1,16 @@
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from "react-native";
+import ridesData from "@/data/rides.json";
+import { RideCard } from "@/modules/rides/components";
+import { useTheme } from "@/shared/context/ThemeContext";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { useTheme } from "@/shared/context/ThemeContext";
-import { RideCard } from "@/modules/rides/components";
-import ridesData from "@/data/rides.json";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function RouteListScreen() {
   const router = useRouter();
@@ -22,16 +29,16 @@ export default function RouteListScreen() {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: colors.background }]}
+    >
       {/* Header */}
       <View style={[styles.header, { borderBottomColor: colors.border }]}>
-        <Text style={[styles.headerTitle, { color: colors.text }]}>Available Rides</Text>
+        <Text style={[styles.headerTitle, { color: colors.text }]}>
+          Available Rides
+        </Text>
         <TouchableOpacity onPress={handleClose}>
-          <MaterialCommunityIcons
-            name="close"
-            size={24}
-            color={colors.icon}
-          />
+          <MaterialCommunityIcons name="close" size={24} color={colors.icon} />
         </TouchableOpacity>
       </View>
 
@@ -41,17 +48,14 @@ export default function RouteListScreen() {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.rideWrapper}>
-            <RideCard
-              ride={item}
-              onPress={() => handleRidePress(item.id)}
-            />
+            <RideCard ride={item} onPress={() => handleRidePress(item.id)} />
           </View>
         )}
         scrollEnabled={true}
         showsVerticalScrollIndicator={true}
         contentContainerStyle={styles.listContent}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 

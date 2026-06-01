@@ -3,9 +3,14 @@ import { StyleSheet, TouchableOpacity, Text } from "react-native";
 interface Props {
   onConfirm: () => void;
   onCancel: () => void;
+  confirmLabel?: string;
 }
 
-export default function ActionButtons({ onConfirm, onCancel }: Props) {
+export default function ActionButtons({
+  onConfirm,
+  onCancel,
+  confirmLabel = "Confirm Booking",
+}: Props) {
   return (
     <>
       <TouchableOpacity
@@ -13,7 +18,7 @@ export default function ActionButtons({ onConfirm, onCancel }: Props) {
         onPress={onConfirm}
         activeOpacity={0.8}
       >
-        <Text style={styles.confirmButtonText}>Confirm Booking</Text>
+        <Text style={styles.confirmButtonText}>{confirmLabel}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity

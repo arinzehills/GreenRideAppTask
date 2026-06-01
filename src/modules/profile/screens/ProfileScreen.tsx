@@ -3,20 +3,27 @@ import { ImpactCard } from "@/modules/profile/components/ImpactCard";
 import { StatsCard } from "@/modules/profile/components/StatsCard";
 import { useProfile } from "@/modules/profile/hooks/useProfile";
 import { useTheme } from "@/shared/context/ThemeContext";
+import { BookingBottomSheet } from "@/modules/booking/screens/booking-confirmation/components";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { useState } from "react";
 import {
+  FlatList,
   SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
+import ridesData from "@/data/rides.json";
 
 export default function ProfileScreen() {
   const { colors } = useTheme();
   const { stats } = useProfile();
   const router = useRouter();
+  const [selectedRideForRebook, setSelectedRideForRebook] = useState<
+    string | null
+  >(null);
 
   const handleBrowseRides = () => {
     router.push("/route-list");

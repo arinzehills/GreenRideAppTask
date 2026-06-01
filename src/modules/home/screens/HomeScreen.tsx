@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useTheme } from "@/shared/context/ThemeContext";
 import { RideCard } from "@/modules/rides/components";
+import { CarBrandFilter } from "@/modules/home/components/CarBrandFilter";
 import ridesData from "@/data/rides.json";
 
 export default function HomeScreen() {
   const router = useRouter();
   const { colors } = useTheme();
+  const [selectedBrand, setSelectedBrand] = useState("All");
 
   // Get first 3 rides for preview
   const previewRides = ridesData.rides.slice(0, 3);
@@ -51,6 +54,12 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </View>
 
+      {/* Car Brand Filter */}
+      <CarBrandFilter
+        selectedBrand={selectedBrand}
+        onBrandSelect={setSelectedBrand}
+      />
+
       {/* Rides preview section */}
       <View style={styles.ridesSection}>
         <Text style={[styles.sectionTitle, { color: colors.text }]}>
@@ -60,7 +69,12 @@ export default function HomeScreen() {
           <RideCard
             key={ride.id}
             ride={ride}
-            onPress={() => console.log("Ride selected:", ride.id)}
+            onPress={() =>
+              router.push({
+                pathname: "/booking",
+                params: { rideId: ride.id },
+              })
+            }
           />
         ))}
 
