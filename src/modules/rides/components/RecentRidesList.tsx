@@ -7,11 +7,13 @@ import { Ride } from "@/modules/rides/types";
 interface RecentRidesListProps {
   rides: Ride[];
   onRemove: (rideId: string) => void;
+  onRidePress?: (rideId: string) => void;
 }
 
 const RecentRidesList = memo(function RecentRidesList({
   rides,
   onRemove,
+  onRidePress,
 }: RecentRidesListProps) {
   const { colors } = useTheme();
 
@@ -31,12 +33,14 @@ const RecentRidesList = memo(function RecentRidesList({
     >
       <Text style={[styles.title, { color: colors.text }]}>Recent Rides</Text>
       {rides.map((ride) => (
-        <View
+        <TouchableOpacity
           key={ride.id}
           style={[
             styles.rideItem,
             { borderBottomColor: colors.border },
           ]}
+          onPress={() => onRidePress?.(ride.id)}
+          activeOpacity={0.7}
           testID={`recent-ride-item-${ride.id}`}
         >
           <Text style={[styles.rideName, { color: colors.text }]}>
@@ -47,7 +51,10 @@ const RecentRidesList = memo(function RecentRidesList({
               {ride.vehicleType}
             </Text>
             <TouchableOpacity
-              onPress={() => onRemove(ride.id)}
+              onPress={(e) => {
+                e.stopPropagation?.();
+                onRemove(ride.id);
+              }}
               testID={`remove-recent-ride-${ride.id}`}
             >
               <MaterialCommunityIcons
@@ -58,7 +65,7 @@ const RecentRidesList = memo(function RecentRidesList({
               />
             </TouchableOpacity>
           </View>
-        </View>
+        </TouchableOpacity>
       ))}
     </View>
   );

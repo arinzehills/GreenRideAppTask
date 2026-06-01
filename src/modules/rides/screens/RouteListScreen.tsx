@@ -1,7 +1,7 @@
 import ridesData from "@/data/rides.json";
 import { RideCard, RecentRidesList } from "@/modules/rides/components";
 import { useTheme } from "@/shared/context/ThemeContext";
-import { EmptyState } from "@/shared/components/EmptyState";
+import EmptyState from "@/shared/components/EmptyState";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useState, useMemo, useCallback } from "react";
@@ -93,7 +93,11 @@ export default function RouteListScreen() {
 
       {/* Recent Rides Section */}
       {isSearchFocused && (
-        <RecentRidesList rides={recentRides} onRemove={handleRemoveRecentRide} />
+        <RecentRidesList
+          rides={recentRides}
+          onRemove={handleRemoveRecentRide}
+          onRidePress={handleRidePress}
+        />
       )}
 
       {/* Rides List */}
