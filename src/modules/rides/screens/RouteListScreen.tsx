@@ -1,6 +1,7 @@
 import ridesData from "@/data/rides.json";
-import { RideCard } from "@/modules/rides/components";
+import { RideCard, RecentRidesList } from "@/modules/rides/components";
 import { useTheme } from "@/shared/context/ThemeContext";
+import { EmptyState } from "@/shared/components/EmptyState";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useState, useMemo, useCallback } from "react";
@@ -91,50 +92,8 @@ export default function RouteListScreen() {
       </View>
 
       {/* Recent Rides Section */}
-      {isSearchFocused && recentRides.length > 0 && (
-        <View
-          style={[
-            styles.recentRidesContainer,
-            {
-              backgroundColor: colors.background,
-              borderTopColor: colors.border,
-            },
-          ]}
-        >
-          <Text style={[styles.recentRidesTitle, { color: colors.text }]}>
-            Recent Rides
-          </Text>
-          {recentRides.map((ride) => (
-            <View
-              key={ride.id}
-              style={[
-                styles.recentRideItem,
-                { borderBottomColor: colors.border },
-              ]}
-              testID={`recent-ride-item-${ride.id}`}
-            >
-              <Text style={[styles.recentRideName, { color: colors.text }]}>
-                {ride.vehicleModel}
-              </Text>
-              <View style={styles.recentRideRight}>
-                <Text style={[styles.recentRideType, { color: colors.primary }]}>
-                  {ride.vehicleType}
-                </Text>
-                <TouchableOpacity
-                  onPress={() => handleRemoveRecentRide(ride.id)}
-                  testID={`remove-recent-ride-${ride.id}`}
-                >
-                  <MaterialCommunityIcons
-                    name="close-circle"
-                    size={20}
-                    color={colors.textSecondary}
-                    style={styles.cancelIcon}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
-          ))}
-        </View>
+      {isSearchFocused && (
+        <RecentRidesList rides={recentRides} onRemove={handleRemoveRecentRide} />
       )}
 
       {/* Rides List */}
@@ -150,11 +109,11 @@ export default function RouteListScreen() {
         showsVerticalScrollIndicator={true}
         contentContainerStyle={styles.listContent}
         ListEmptyComponent={
-          <View style={styles.emptyContainer}>
-            <Text style={[styles.emptyText, { color: colors.textSecondary }]}>
-              No rides found
-            </Text>
-          </View>
+          <EmptyState
+            icon="car-off"
+            title="No Rides Found"
+            subtitle="Try adjusting your search"
+          />
         }
       />
     </SafeAreaView>
@@ -187,40 +146,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     fontSize: 16,
   },
-  recentRidesContainer: {
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderTopWidth: 1,
-  },
-  recentRidesTitle: {
-    fontSize: 14,
-    fontWeight: "600",
-    marginBottom: 8,
-  },
-  recentRideItem: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-  },
-  recentRideName: {
-    fontSize: 14,
-    fontWeight: "500",
-    flex: 1,
-  },
-  recentRideRight: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  recentRideType: {
-    fontSize: 12,
-    fontWeight: "600",
-  },
-  cancelIcon: {
-    marginLeft: 4,
-  },
   listContent: {
     paddingHorizontal: 24,
     paddingVertical: 16,
@@ -228,12 +153,5 @@ const styles = StyleSheet.create({
   },
   rideWrapper: {
     marginBottom: 8,
-  },
-  emptyContainer: {
-    alignItems: "center",
-    paddingVertical: 32,
-  },
-  emptyText: {
-    fontSize: 14,
   },
 });

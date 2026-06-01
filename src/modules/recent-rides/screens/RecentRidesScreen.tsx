@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import {
   FlatList,
   SafeAreaView,
   StyleSheet,
+  Text,
   View,
 } from "react-native";
 import { useTheme } from "@/shared/context/ThemeContext";
@@ -18,17 +19,19 @@ export default function RecentRidesScreen() {
   const bookingHistory = useSelector((state: RootState) => state.booking.bookingHistory);
   const [selectedRideId, setSelectedRideId] = useState<string | null>(null);
 
-  const selectedRide = selectedRideId
-    ? ridesData.rides.find((r) => r.id === selectedRideId)
-    : null;
+  const selectedRide = useMemo(() => {
+    return selectedRideId
+      ? ridesData.rides.find((r) => r.id === selectedRideId)
+      : null;
+  }, [selectedRideId]);
 
-  const handleRidePress = (rideId: string) => {
+  const handleRidePress = useCallback((rideId: string) => {
     setSelectedRideId(rideId);
-  };
+  }, []);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setSelectedRideId(null);
-  };
+  }, []);
 
   return (
     <SafeAreaView
