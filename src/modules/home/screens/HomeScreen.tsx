@@ -5,7 +5,7 @@ import { useRouter } from "expo-router";
 import { useTheme } from "@/shared/context/ThemeContext";
 import { RideCard } from "@/modules/rides/components";
 import CarBrandFilter from "@/modules/home/components/CarBrandFilter";
-import ridesData from "@/data/rides.json";
+import ridesData from "@/data";
 
 export default function HomeScreen() {
   const router = useRouter();

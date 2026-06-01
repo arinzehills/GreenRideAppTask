@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StyleProp, ViewStyle } from 'react-native';
 import { Button as AntButton } from '@ant-design/react-native';
 import { ButtonProps } from './types';
 
@@ -42,7 +42,7 @@ const Button: React.FC<ButtonProps> = ({
       size={getButtonSize()}
       loading={loading}
       disabled={disabled}
-      style={[styles.button, style]}
+      style={[styles.button, style] as any}
       {...props}
     >
       {title}

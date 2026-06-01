@@ -1,4 +1,4 @@
-import ridesData from "@/data/rides.json";
+import ridesData from "@/data";
 import { RideCard, RecentRidesList } from "@/modules/rides/components";
 import { useTheme } from "@/shared/context/ThemeContext";
 import EmptyState from "@/shared/components/EmptyState";

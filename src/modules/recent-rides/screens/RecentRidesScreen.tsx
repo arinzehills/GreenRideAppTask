@@ -7,12 +7,12 @@ import {
   View,
 } from "react-native";
 import { useTheme } from "@/shared/context/ThemeContext";
-import { EmptyState } from "@/shared/components/EmptyState";
+import EmptyState from "@/shared/components/EmptyState";
 import { RecentRideItem } from "@/modules/recent-rides/components";
 import { BookingBottomSheet } from "@/modules/booking/screens/booking-confirmation/components";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
-import ridesData from "@/data/rides.json";
+import ridesData from "@/data";
 
 export default function RecentRidesScreen() {
   const { colors } = useTheme();

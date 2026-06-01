@@ -1,130 +1,182 @@
-# PlacesApp - React Native Places Search Application
+# GreenRide Mobile App 🚗♻️
 
-A modern React Native application for searching and exploring places using Google Places API, built with clean architecture principles and professional mobile development practices.
+A React Native eco-friendly ride-hailing application built with TypeScript, Redux, and Expo. Users can book rides, track CO2 savings, earn EcoPoints, and enjoy a seamless dark mode experience.
 
-## 📱 Live Preview
+## 🎯 Features
 
-🎬 **[Watch App Demo](https://www.loom.com/share/a8da95e0b3fb4565bf2df418e33a878c?sid=583fea77-8c8f-48bc-9276-fc0f9ad1907f)** - See the app in action!
+### Core Features
+- **Ride Booking** - Browse and book Electric/Hybrid vehicles
+- **Real-time CO2 Tracking** - See environmental impact of each ride
+- **EcoPoints Rewards** - Earn points based on CO2 saved (1kg CO2 = 10 points)
+- **Profile & Statistics** - Track total rides, CO2 savings, and rewards
+- **Recent Rides** - View booking history with persistent storage
+- **Dark Mode** - System-based theme toggle with persistence
 
-## 🚀 Features
+### UI/UX
+- Welcome/Onboarding Screen
+- Home Screen with Ride Filtering & Sorting
+- Interactive Map View with User Location
+- Booking Confirmation with Bottom Sheet
+- Booking Success with Confetti Animation
+- Theme Toggle in Profile
 
-- **Google Places Autocomplete**: Real-time place search with debounced input
-- **Interactive Map View**: Visualize places on an interactive map with custom markers
-- **Search History**: Persistent storage of recent searches
-- **Place Details**: Comprehensive information about selected places
-- **Clean Architecture**: Modular structure with separation of concerns
+## 🛠️ Tech Stack
 
-## 🛠 Tech Stack
+| Category | Technology |
+|----------|------------|
+| **Language** | TypeScript |
+| **Framework** | React Native + Expo |
+| **Navigation** | Expo Router (File-based) |
+| **State Management** | Redux Toolkit + Redux Persist |
+| **Styling** | React Native StyleSheet |
+| **Maps** | react-native-maps + expo-location |
+| **Testing** | Jest + React Testing Library (54 tests) |
+| **CI/CD** | GitHub Actions |
 
-- **React Native** with Expo Router for navigation
-- **TypeScript** for type safety and better developer experience
-- **Redux Toolkit** for state management with async thunks
-- **Redux Persist** for data persistence
-- **Ant Design React Native** for consistent UI components
-- **React Native Maps** for map functionality
-- **Jest** with comprehensive test coverage
+## 📱 Platforms
 
-## 📁 Project Structure
+- ✅ iOS (via Expo)
+- ✅ Android (via Expo)
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 20.x or higher
+- npm or yarn
+- Expo CLI: `npm install -g eas-cli`
+- Expo Go app (iOS/Android) for testing
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/arinzehills/GreenRideAppTask.git
+cd GreenRideAppTask
+
+# Install dependencies
+npm install --legacy-peer-deps
+
+# Run tests
+npm test
+
+# Start development server
+npm start
+```
+
+### Run on Device/Emulator
+
+```bash
+# iOS Simulator (Mac only)
+npm run ios
+
+# Android Emulator
+npm run android
+```
+
+### Test on Your Phone
+
+1. Download **Expo Go** from App Store or Play Store
+2. Visit: https://expo.dev/accounts/arinzehills/projects/greenrideapptask
+3. Scan the QR code or tap "Open with Expo Go"
+4. App loads on your device instantly! 📱
+
+## 📸 Screenshots
+
+| Home Screen | Ride Selection | Booking Confirmation |
+|:---:|:---:|:---:|
+| ![Home](./assets/screenshot/Screenshot%202026-06-01%20at%208.35.07%20AM.png) | ![Rides](./assets/screenshot/Screenshot%202026-06-01%20at%208.35.19%20AM.png) | ![Booking](./assets/screenshot/Screenshot%202026-06-01%20at%208.35.30%20AM.png) |
+
+| Booking Success | Profile & Stats |
+|:---:|:---:|
+| ![Success](./assets/screenshot/Screenshot%202026-06-01%20at%208.35.39%20AM.png) | ![Profile](./assets/screenshot/Screenshot%202026-06-01%20at%208.35.49%20AM.png) |
+
+## 📂 Project Structure
 
 ```
 src/
-├── app/                    # App-level configuration (Router, Layout)
-├── modules/               # Feature modules
-│   ├── places/           # Places search functionality
-│   │   ├── components/   # Reusable UI components
-│   │   ├── hooks/        # Custom hooks (useAutocomplete, usePlaceDetails)
-│   │   ├── redux/        # State management (slices, thunks)
-│   │   ├── screens/      # Screen components
-│   │   └── services/     # API services and business logic
-│   ├── map/              # Map functionality
-│   └── home/             # Home screen
-├── shared/               # Shared utilities
-│   └── utils/           # Common utilities (debounce, formatters, validation)
-└── store/               # Redux store configuration
+├── app/                          # Expo Router routes
+│   ├── (tabs)/                   # Tab navigation
+│   │   ├── index.tsx            # Home screen
+│   │   ├── recent.tsx           # Recent rides
+│   │   └── profile.tsx          # Profile & settings
+│   ├── booking.tsx              # Booking confirmation modal
+│   └── _layout.tsx              # Root layout with providers
+│
+├── modules/                      # Feature modules (rides, booking, profile, map)
+├── shared/                       # Shared components, theme, hooks
+├── store/                        # Redux configuration + persistence
+└── data/
+    └── rides.json               # Mock ride data
 ```
 
 ## 🧪 Testing
 
-Comprehensive test suite covering:
-- Unit tests for utility functions
-- Redux slice and thunk testing
-- Service layer testing
-- Input validation testing
-
 ```bash
-npm test              # Run all tests
-npm run test:watch    # Watch mode for development
+# Run all tests
+npm test
+
+# Run in watch mode
+npm run test:watch
+
+# Generate coverage
+npm test -- --coverage
 ```
 
-## 🚀 Getting Started
+**54 Unit Tests** covering:
+- Redux slices (Profile, Booking)
+- Custom hooks (useBooking, useProfile)
+- State management & persistence
+- EcoPoints calculation
 
-### Prerequisites
-- Node.js (>= 16)
-- Expo CLI
-- Google Places API key
+## 🌓 Dark Mode
 
-### Installation
+- System-based light/dark detection
+- Manual toggle in Profile screen
+- Persistent preference (AsyncStorage)
+- Centralized color system (`src/shared/theme/colors.ts`)
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+## 📡 API Integration
 
-3. Set up environment variables:
-   - Add your Google Places API key to your environment
-   - Configure `EXPO_PUBLIC_GOOGLE_PLACES_API_KEY`
+Currently uses **mock data** (`src/data/rides.json`). To integrate a real backend, update `RidesApiService` in `src/modules/rides/services/`.
 
-4. Start the development server:
-   ```bash
-   npm start
-   ```
+## 🚢 Deployment
 
-## 🏗 Architecture Highlights
+### Expo Public Link
+```
+https://expo.dev/accounts/arinzehills/projects/greenrideapptask
+```
 
-### Clean Architecture Pattern
-- **Service Layer**: Handles API communication and data transformation
-- **Redux Layer**: Manages application state with async operations
-- **Hook Layer**: Provides reusable stateful logic
-- **Component Layer**: Focuses purely on UI presentation
+### GitHub Actions CI/CD
+Automated tests run on every push. View results in **GitHub → Actions tab**.
 
-### Key Design Decisions
-- **Modular Structure**: Features organized in self-contained modules
-- **TypeScript First**: Full type safety across the application
-- **Custom Hooks**: Encapsulated business logic in reusable hooks
-- **Error Handling**: Comprehensive error boundaries and user feedback
-- **Performance**: Debounced search, optimized re-renders, and efficient state updates
+### Troubleshooting
+If `npm install` fails, use this as fallback:
+```bash
+npm install --legacy-peer-deps
+```
 
-### State Management
-- **Redux Toolkit** for predictable state updates
-- **Async Thunks** for API operations with loading states
-- **Redux Persist** for seamless user experience across app restarts
+## 📋 Assumptions
 
-## 🎯 Key Features Implementation
+1. Mock data only (no backend API)
+2. Location permissions required (iOS/Android)
+3. Redux Persist for data persistence
+4. EcoPoints formula: 1kg CO2 = 10 points
+5. Unlimited booking history storage
 
-### Places Search
-- Real-time autocomplete with 300ms debounce
-- Error handling and loading states
-- History management with duplicate prevention
+## 🔮 Future Enhancements
 
-### Map Integration
-- Custom markers for search results
-- User location tracking
-- Smooth animations and region updates
+- Real backend API integration
+- User authentication (Firebase)
+- Payment processing (Stripe)
+- Push notifications
+- Real-time ride tracking
+- Driver ratings & reviews
 
-### Data Persistence
-- Search history persistence
-- User preferences storage
-- Offline capability preparation
+## 👤 Author
 
-## 🧩 Code Quality
-
-- **ESLint** for code consistency
-- **TypeScript** strict mode enabled
-- **Modular architecture** with clear separation of concerns
-- **Comprehensive testing** with Jest
-- **Professional naming conventions** and file organization
+**Arinze Hills**
+- GitHub: [@arinzehills](https://github.com/arinzehills)
 
 ---
 
-**Built with ❤️ using modern React Native development practices**
+**Built with ❤️ for sustainable mobility**

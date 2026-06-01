@@ -8,7 +8,7 @@ interface UserLocationState {
   error: string | null;
 }
 
-export const useMapLocation = () => {
+export const useMapLocation = (autoFetch = false) => {
   const [userLocation, setUserLocation] = useState<UserLocationState>({
     location: null,
     loading: false,
@@ -17,6 +17,10 @@ export const useMapLocation = () => {
 
   const requestLocationPermission = useCallback(async (): Promise<boolean> => {
     try {
+      if (!Location.requestForegroundPermissionsAsync) {
+        console.warn('Location.requestForegroundPermissionsAsync not available');
+        return false;
+      }
       const { status } = await Location.requestForegroundPermissionsAsync();
       return status === 'granted';
     } catch (error) {
@@ -67,7 +71,21 @@ export const useMapLocation = () => {
 
   // Get location on mount
   useEffect(() => {
-    getCurrentLocation();
+    let isMounted = true;
+    (async () => {
+      try {
+        if (isMounted) {
+          await getCurrentLocation();
+        }
+      } catch (error) {
+        if (isMounted) {
+          console.error('Failed to get initial location:', error);
+        }
+      }
+    })();
+    return () => {
+      isMounted = false;
+    };
   }, [getCurrentLocation]);
 
   const refreshLocation = useCallback(() => {

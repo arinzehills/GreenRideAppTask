@@ -16,7 +16,7 @@ const Input: React.FC<InputProps> = ({
       {label && <Text style={styles.label}>{label}</Text>}
       <View style={[styles.inputContainer, error && styles.inputError]}>
         <InputItem
-          {...props}
+          {...(props as any)}
           extra={rightIcon}
           style={style}
         />

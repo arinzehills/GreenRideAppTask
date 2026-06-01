@@ -2,21 +2,14 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { memo } from "react";
 import { useTheme } from "@/shared/context/ThemeContext";
+import { Ride } from "@/modules/rides/types";
 
 interface BookingHistoryItem {
   id: string;
-  ride: {
-    id: string;
-    vehicleType: string;
-    vehicleModel: string;
-    driverName: string;
-    driverRating: number;
-    eta: string;
-    price: number;
-    co2Saved: number;
-    estimatedDuration: string;
-  };
-  timestamp: string;
+  ride: Ride;
+  pickupLocation: string;
+  destination: string;
+  timestamp: number;
 }
 
 interface Props {

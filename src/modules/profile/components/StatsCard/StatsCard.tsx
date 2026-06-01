@@ -3,7 +3,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "@/shared/context/ThemeContext";
 
 interface StatsCardProps {
-  icon: string;
+  icon?: string;
   iconEmoji?: string;
   value: string | number;
   label: string;

@@ -15,7 +15,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import ridesData from "@/data/rides.json";
+import ridesData from "@/data";
 
 export default function ProfileScreen() {
   const { colors } = useTheme();

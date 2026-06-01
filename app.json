@@ -9,7 +9,8 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.arinzehills.greenrideapptask"
     },
     "android": {
       "adaptiveIcon": {
@@ -44,12 +45,6 @@
       "eas": {
         "projectId": "3f0c366b-bccb-4030-9ff9-566afe5f05a0"
       }
-    },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
-    "updates": {
-      "url": "https://u.expo.dev/3f0c366b-bccb-4030-9ff9-566afe5f05a0"
     }
   }
 }

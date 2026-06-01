@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as Location from "expo-location";
-import ridesData from "@/data/rides.json";
+import ridesData from "@/data";
 import { Ride } from "@/modules/rides/types";
 import { useTheme } from "@/shared/context/ThemeContext";
 import { useMapLocation } from "@/modules/map/hooks";
