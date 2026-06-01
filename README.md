@@ -82,11 +82,17 @@ npm run android
 
 ## 📸 Screenshots
 
-![Home Screen](assets/screenshot/screenshot1.png)
-![Ride Selection](assets/screenshot/screenshot2.png)
-![Booking Confirmation](assets/screenshot/screenshot3.png)
-![Booking Success](assets/screenshot/screenshot4.png)
-![Profile & Stats](assets/screenshot/screenshot5.png)
+| Home Screen | Ride Selection | Booking Confirmation |
+|:---:|:---:|:---:|
+| ![Home](assets/screenshot/screenshot1.png) | ![Rides](assets/screenshot/screenshot2.png) | ![Booking](assets/screenshot/screenshot3.png) |
+
+| Booking Success | Profile & Stats |
+|:---:|:---:|
+| ![Success](assets/screenshot/screenshot4.png) | ![Profile](assets/screenshot/screenshot5.png) |
+
+### 🎬 Live Demo
+
+Watch the app in action: [View on Loom](https://www.loom.com/share/b89878f2da72452383bbbe1ac841e2a4)
 
 ## 📂 Project Structure
 
