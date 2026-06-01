@@ -56,7 +56,7 @@ describe("RouteListScreen Search Filtering", () => {
     if (!query.trim()) {
       return rides;
     }
-    const q = query.toLowerCase();
+    const q = query.trim().toLowerCase();
     return rides.filter(
       (ride) =>
         ride.vehicleModel.toLowerCase().includes(q) ||

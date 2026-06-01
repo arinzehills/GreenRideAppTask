@@ -34,7 +34,7 @@ export default function RouteListScreen() {
     if (!searchQuery.trim()) {
       return rides;
     }
-    const query = searchQuery.toLowerCase();
+    const query = searchQuery.trim().toLowerCase();
     return rides.filter(
       (ride) =>
         ride.vehicleModel.toLowerCase().includes(query) ||

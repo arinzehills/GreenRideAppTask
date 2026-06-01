@@ -9,12 +9,12 @@ describe("RouteListScreen Snapshot Tests", () => {
       // Test structure verification
       const componentStructure = {
         SafeAreaView: {
-          View: {
+          header: {
             // Header
             Text: "Available Rides",
             TouchableOpacity: "close button",
           },
-          View: {
+          searchContainer: {
             // Search container
             TextInput: {
               placeholder: "Search Ride",
