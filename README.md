@@ -82,13 +82,11 @@ npm run android
 
 ## 📸 Screenshots
 
-| Home Screen | Ride Selection | Booking Confirmation |
-|:---:|:---:|:---:|
-| ![Home](./assets/screenshot/Screenshot%202026-06-01%20at%208.35.07%20AM.png) | ![Rides](./assets/screenshot/Screenshot%202026-06-01%20at%208.35.19%20AM.png) | ![Booking](./assets/screenshot/Screenshot%202026-06-01%20at%208.35.30%20AM.png) |
-
-| Booking Success | Profile & Stats |
-|:---:|:---:|
-| ![Success](./assets/screenshot/Screenshot%202026-06-01%20at%208.35.39%20AM.png) | ![Profile](./assets/screenshot/Screenshot%202026-06-01%20at%208.35.49%20AM.png) |
+![Home Screen](assets/screenshot/screenshot1.png)
+![Ride Selection](assets/screenshot/screenshot2.png)
+![Booking Confirmation](assets/screenshot/screenshot3.png)
+![Booking Success](assets/screenshot/screenshot4.png)
+![Profile & Stats](assets/screenshot/screenshot5.png)
 
 ## 📂 Project Structure
 
