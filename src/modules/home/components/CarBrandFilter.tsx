@@ -1,5 +1,6 @@
 import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { memo } from "react";
 import { useTheme } from "@/shared/context/ThemeContext";
 
 const BRANDS = [
@@ -14,7 +15,7 @@ interface Props {
   onBrandSelect: (brand: string) => void;
 }
 
-export default function CarBrandFilter({ selectedBrand, onBrandSelect }: Props) {
+const CarBrandFilter = memo(function CarBrandFilter({ selectedBrand, onBrandSelect }: Props) {
   const { colors } = useTheme();
 
   return (
@@ -54,7 +55,9 @@ export default function CarBrandFilter({ selectedBrand, onBrandSelect }: Props) 
       ))}
     </View>
   );
-}
+});
+
+export default CarBrandFilter;
 
 const styles = StyleSheet.create({
   container: {

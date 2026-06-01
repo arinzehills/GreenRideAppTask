@@ -1,5 +1,6 @@
 import { StyleSheet, View, Text } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { memo } from "react";
 import { useTheme } from "@/shared/context/ThemeContext";
 
 interface Props {
@@ -8,7 +9,7 @@ interface Props {
   subtitle?: string;
 }
 
-export default function EmptyState({ icon, title, subtitle }: Props) {
+const EmptyState = memo(function EmptyState({ icon, title, subtitle }: Props) {
   const { colors } = useTheme();
 
   return (
@@ -27,7 +28,9 @@ export default function EmptyState({ icon, title, subtitle }: Props) {
       )}
     </View>
   );
-}
+});
+
+export default EmptyState;
 
 const styles = StyleSheet.create({
   container: {

@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { memo } from "react";
 import { useTheme } from "@/shared/context/ThemeContext";
 
 interface BookingHistoryItem {
@@ -23,7 +24,7 @@ interface Props {
   onPress: (rideId: string) => void;
 }
 
-export default function RecentRideItem({ item, onPress }: Props) {
+const RecentRideItem = memo(function RecentRideItem({ item, onPress }: Props) {
   const { colors } = useTheme();
   const ride = item.ride;
   const ecoPoints = Math.round(ride.co2Saved * 10);
@@ -91,7 +92,9 @@ export default function RecentRideItem({ item, onPress }: Props) {
       </View>
     </TouchableOpacity>
   );
-}
+});
+
+export default RecentRideItem;
 
 const styles = StyleSheet.create({
   rideCard: {

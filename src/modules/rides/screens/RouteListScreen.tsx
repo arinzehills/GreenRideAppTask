@@ -3,7 +3,7 @@ import { RideCard } from "@/modules/rides/components";
 import { useTheme } from "@/shared/context/ThemeContext";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import {
   FlatList,
   StyleSheet,
@@ -41,20 +41,20 @@ export default function RouteListScreen() {
     );
   }, [searchQuery, rides]);
 
-  const handleRemoveRecentRide = (rideId: string) => {
+  const handleRemoveRecentRide = useCallback((rideId: string) => {
     setVisibleRecentRides((prev) => prev.filter((id) => id !== rideId));
-  };
+  }, []);
 
-  const handleRidePress = (rideId: string) => {
+  const handleRidePress = useCallback((rideId: string) => {
     router.push({
       pathname: "/booking",
       params: { rideId },
     });
-  };
+  }, [router]);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     router.back();
-  };
+  }, [router]);
 
   return (
     <SafeAreaView

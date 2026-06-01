@@ -1,5 +1,6 @@
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { memo } from "react";
 import { Ride } from "@/modules/rides/types";
 
 interface RideCardProps {
@@ -7,7 +8,7 @@ interface RideCardProps {
   onPress?: () => void;
 }
 
-export default function RideCard({ ride, onPress }: RideCardProps) {
+const RideCard = memo(function RideCard({ ride, onPress }: RideCardProps) {
   const isElectric = ride.vehicleType === "Electric";
   const iconName = isElectric ? "lightning-bolt" : "leaf";
   const badgeColor = isElectric ? "#00C853" : "#8BC34A";
@@ -44,7 +45,9 @@ export default function RideCard({ ride, onPress }: RideCardProps) {
       </View>
     </TouchableOpacity>
   );
-}
+});
+
+export default RideCard;
 
 const styles = StyleSheet.create({
   card: {

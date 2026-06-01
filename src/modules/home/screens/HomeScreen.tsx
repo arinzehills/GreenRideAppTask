@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
@@ -15,13 +15,13 @@ export default function HomeScreen() {
   // Get first 3 rides for preview
   const previewRides = ridesData.rides.slice(0, 3);
 
-  const handleViewMore = () => {
+  const handleViewMore = useCallback(() => {
     router.push("/route-list");
-  };
+  }, [router]);
 
-  const handleWhereToPress = () => {
+  const handleWhereToPress = useCallback(() => {
     router.push("/route-list");
-  };
+  }, [router]);
 
   return (
     <ScrollView
