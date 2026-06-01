@@ -2,6 +2,12 @@
 
 A React Native eco-friendly ride-hailing application built with TypeScript, Redux, and Expo. Users can book rides, track CO2 savings, earn EcoPoints, and enjoy a seamless dark mode experience.
 
+## 🎬 Live Demo & Download
+
+- **📹 Watch Demo:** [View on Loom](https://www.loom.com/share/b89878f2da72452383bbbe1ac841e2a4)
+- **📱 Download APK:** [GreenRide.apk](https://expo.dev/artifacts/eas/mm6eqSZDnKp1EbGVWhJzuc.apk)
+- **🌐 Expo Link:** [https://expo.dev/accounts/arinzehills/projects/greenrideapptask](https://expo.dev/accounts/arinzehills/projects/greenrideapptask)
+
 ## 🎯 Features
 
 ### Core Features
@@ -89,10 +95,6 @@ npm run android
 | Booking Success | Profile & Stats |
 |:---:|:---:|
 | ![Success](assets/screenshot/screenshot4.png) | ![Profile](assets/screenshot/screenshot5.png) |
-
-### 🎬 Live Demo
-
-Watch the app in action: [View on Loom](https://www.loom.com/share/b89878f2da72452383bbbe1ac841e2a4)
 
 ## 📂 Project Structure
 
