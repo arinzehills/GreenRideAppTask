@@ -17,6 +17,10 @@ export default function ActionButtons({
         style={styles.confirmButton}
         onPress={onConfirm}
         activeOpacity={0.8}
+        accessible={true}
+        accessibilityLabel={confirmLabel}
+        accessibilityRole="button"
+        accessibilityHint="Confirms your ride booking"
       >
         <Text style={styles.confirmButtonText}>{confirmLabel}</Text>
       </TouchableOpacity>
@@ -25,6 +29,10 @@ export default function ActionButtons({
         style={styles.cancelButton}
         onPress={onCancel}
         activeOpacity={0.7}
+        accessible={true}
+        accessibilityLabel="Cancel booking"
+        accessibilityRole="button"
+        accessibilityHint="Closes the booking confirmation"
       >
         <Text style={styles.cancelButtonText}>Cancel</Text>
       </TouchableOpacity>

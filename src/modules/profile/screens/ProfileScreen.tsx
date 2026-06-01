@@ -69,6 +69,10 @@ export default function ProfileScreen() {
           style={[styles.browseButton, { backgroundColor: colors.primary }]}
           onPress={handleBrowseRides}
           activeOpacity={0.8}
+          accessible={true}
+          accessibilityLabel="Browse available rides"
+          accessibilityRole="button"
+          accessibilityHint="Navigate to see all available rides for booking"
         >
           <Text style={styles.browseButtonText}>Browse Available Rides</Text>
           <MaterialCommunityIcons

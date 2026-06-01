@@ -17,6 +17,11 @@ export default function DarkModeToggle() {
       ]}
       onPress={toggleTheme}
       activeOpacity={0.7}
+      accessible={true}
+      accessibilityLabel={`Toggle theme to ${isDark ? "light" : "dark"} mode`}
+      accessibilityRole="switch"
+      accessibilityState={{ checked: isDark }}
+      accessibilityHint="Double tap to switch between light and dark theme"
     >
       <Ionicons
         name="sunny"

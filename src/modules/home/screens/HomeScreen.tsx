@@ -39,6 +39,9 @@ export default function HomeScreen() {
         <TouchableOpacity
           onPress={handleWhereToPress}
           activeOpacity={0.7}
+          accessible={true}
+          accessibilityLabel="Search for destination"
+          accessibilityRole="button"
         >
           <View
             style={[
@@ -82,6 +85,9 @@ export default function HomeScreen() {
         <TouchableOpacity
           style={styles.viewMoreLink}
           onPress={handleViewMore}
+          accessible={true}
+          accessibilityLabel="View more available rides"
+          accessibilityRole="button"
         >
           <Text style={[styles.viewMoreText, { color: colors.primary }]}>
             View More Rides
